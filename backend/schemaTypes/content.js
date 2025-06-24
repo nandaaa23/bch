@@ -1,26 +1,45 @@
 export default {
-    name: 'featuredMoment',
-    title: 'contents',
-    type: 'document',
-    fields: [
-      {
-        name: 'title',
-        title: 'Title',
-        type: 'string',
-      },
-      {
-        name: 'image',
-        title: 'Image',
-        type: 'image',
-        options: {
-          hotspot: true,
-        },
-      },
-      {
-        name: 'description',
-        title: 'Description',
-        type: 'text',
-      },
-    ]
-  }
-  
+  name: 'featuredContent',
+  title: 'Content',
+  type: 'document',
+  fields: [
+    {
+      name: 'heading',
+      title: 'Heading',
+      type: 'string',
+    },
+    {
+      name: 'subheading',
+      title: 'Subheading',
+      type: 'text',
+    },
+    {
+      name: 'cards',
+      title: 'Cards',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'title',
+              title: 'Card Title',
+              type: 'string',
+            },
+            {
+              name: 'description',
+              title: 'Card Description',
+              type: 'text',
+            },
+            {
+              name: 'image',
+              title: 'Card Image',
+              type: 'image',
+              options: { hotspot: true },
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
