@@ -1,103 +1,74 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+
+const featuredMoments = [
+  {
+    title: "Overlanding Trips",
+    description:
+      "Overlanding is a form of slow travel. It's all about taking the road less travelled, camping across different terrains, and getting away from the tourist trail in overlanding trucks.",
+    image: "/pics/Screenshot 2025-06-24 004251.png",
+  },
+  {
+    title: "Mountain & Desert Camping",
+    description:
+      "We've found the perfect mountains and deserts to pitch your tent and roll out those sleeping bags for a date with the milky way. Want in?",
+    image: "/pics/Screenshot 2025-06-24 004313.png",
+  },
+  {
+    title: "Mountain Trekking",
+    description:
+      "Far away from the skyscrapers and beach clubs of Dubai, we've discovered a breathtaking array of mountains, deserts and lush green wadis waiting to be explored. So, let's go hiking!",
+    image: "/pics/Screenshot 2025-06-24 004346.png",
+  },
+];
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [startIdx, setStartIdx] = useState(0);
+  const visibleCount = 3;
+  const total = featuredMoments.length;
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const handlePrev = () => {
+    setStartIdx((prev) => (prev - 1 + total) % total);
+  };
+  const handleNext = () => {
+    setStartIdx((prev) => (prev + 1) % total);
+  };
+
+  // Get visible cards, wrap around if needed
+  const visibleCards = Array.from({ length: visibleCount }, (_, i) =>
+    featuredMoments[(startIdx + i) % total]
+  );
+
+  return (
+    <section className="featured-section">
+      <div className="featured-section-arrows">
+        <button className="arrow-btn-new" onClick={handlePrev} aria-label="Previous">
+          &#8592;
+        </button>
+        <button className="arrow-btn-new" onClick={handleNext} aria-label="Next">
+          &#8594;
+        </button>
+      </div>
+      <div className="featured-section-container">
+        <h2 className="featured-section-title">Featured Moments</h2>
+        <p className="featured-section-subtitle">
+          Our experiences reflect our distinct ethos and core values, highlighting the very best each of our homes offers.
+        </p>
+        <div className="featured-section-grid">
+          {visibleCards.map((moment, idx) => (
+            <div className="featured-card-new" key={idx}>
+              <img
+                src={moment.image}
+                alt={moment.title}
+                className="featured-card-image"
+                draggable="false"
+              />
+              <h3 className="featured-card-title">{moment.title}</h3>
+              <p className="featured-card-desc">{moment.description}</p>
+            </div>
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </section>
   );
 }
