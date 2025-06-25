@@ -5,19 +5,21 @@ const featuredMoments = [
   {
     title: "Overlanding Trips",
     description:
-      "Overlanding is a form of slow travel. It's all about taking the road less travelled, camping across different terrains, and getting away from the tourist trail in overlanding trucks.",
+      "Overlanding is a form of slow travel. It's all about taking the <br /> road less travelled,camping across different terrains, and <br /> getting away from the tourist trail in overlanding trucks.",
     image: "/pics/Screenshot 2025-06-24 004251.png",
+    splitWord: "the",
+splitWord2:"and",
   },
   {
     title: "Mountain & Desert Camping",
     description:
-      "We've found the perfect mountains and deserts to pitch your tent and roll out those sleeping bags for a date with the milky way. Want in?",
+      "We've found the perfect mountains and deserts to pitch your <br />tent and roll out those sleeping bags for a date with the milky <br />way. Want in?",
     image: "/pics/Screenshot 2025-06-24 004313.png",
   },
   {
     title: "Mountain Trekking",
     description:
-      "Far away from the skyscrapers and beach clubs of Dubai, we've discovered a breathtaking array of mountains, deserts and lush green wadis waiting to be explored. So, let's go hiking!",
+      "Far away from the skyscrapers and beach clubs of Dubai,<br />we've discovered a breathtaking array of mountains, deserts<br /> and lush green wadis waiting to be explored. So, let's go<br /> hiking!",
     image: "/pics/Screenshot 2025-06-24 004346.png",
   },
 ];
@@ -42,7 +44,7 @@ export default function Home() {
   return (
     <section className="featured-section">
       <div className="featured-section-arrows">
-        <button className="arrow-btn-new" onClick={handlePrev} aria-label="Previous">
+        <button className="arrow-btn-new arrow-btn-left" onClick={handlePrev} aria-label="Previous">
           &#8592;
         </button>
         <button className="arrow-btn-new" onClick={handleNext} aria-label="Next">
@@ -52,7 +54,7 @@ export default function Home() {
       <div className="featured-section-container">
         <h2 className="featured-section-title">Featured Moments</h2>
         <p className="featured-section-subtitle">
-          Our experiences reflect our distinct ethos and core values, highlighting the very best each of our homes offers.
+          Our experiences reflect our distinct ethos and core values, highlighting<br /> the very best each of our homes offers.
         </p>
         <div className="featured-section-grid">
           {visibleCards.map((moment, idx) => (
@@ -64,7 +66,7 @@ export default function Home() {
                 draggable="false"
               />
               <h3 className="featured-card-title">{moment.title}</h3>
-              <p className="featured-card-desc">{moment.description}</p>
+              <p className="featured-card-desc" dangerouslySetInnerHTML={{ __html: moment.description }} />
             </div>
           ))}
         </div>

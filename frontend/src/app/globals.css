@@ -77,6 +77,12 @@ body {
   border-color: #bbb;
 }
 
+.arrow-btn-left {
+  color: #ccc4c4 !important;
+  border-color: #ccc4c4;
+  background: none;
+}
+
 .featured-cards {
   display: flex;
   gap: 40px;
@@ -120,10 +126,17 @@ body {
 }
 
 .featured-card-desc {
-  color: #6d6d6d;
-  font-size: 0.97rem;
-  padding: 0 18px 18px 18px;
-  margin: 0;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  color: #838383;
+  line-height: 1.7;
+  margin-top: 20px;
+  margin-left: 0;
+  width: 100%;
+  text-align: left;
+  max-width: 450px;
+  letter-spacing: 0.04em;
 }
 
 @media (max-width: 1100px) {
@@ -186,7 +199,7 @@ body {
 }
 
 .featured-section-container {
-  max-width: 1240px;
+  max-width: 1260px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -194,31 +207,34 @@ body {
   align-items: flex-start;
   padding-left: 0;
   padding-right: 0;
+  padding-top: 0;
 }
 
 .featured-section-title {
-  font-family: 'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 40px;
-  font-weight: 700;
+  font-family: 'Freigeist Wide', Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 400;
   line-height: 48px;
   letter-spacing: 0;
   color: #000;
   text-align: left;
-  margin-bottom: 16px;
-  margin-top: 0;
+  margin-bottom: 20px;
+  margin-top: -55px;
   align-self: flex-start;
   padding-left: 0;
+  margin-left: -110px;
 }
 
 .featured-section-subtitle {
-  font-family: 'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 28px;
-  color: #6B7280;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 17.8px;
+  font-weight: 100;
+  line-height: 25px;
+  color: #838383;
   max-width: 720px;
-  margin-bottom: 64px;
-  margin-top: 0;
+  margin-bottom: 80px;
+  margin-top: 6px;
+  margin-left: -110px;
   text-align: left;
   align-self: flex-start;
   padding-left: 0;
@@ -226,11 +242,13 @@ body {
 
 .featured-section-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 45px;
   width: 100%;
+  
   justify-content: center;
   align-items: start;
+  margin-top: 38px;
 }
 
 @media (max-width: 1240px) {
@@ -269,51 +287,60 @@ body {
   box-shadow: none;
   margin: 0;
   border: none;
+
 }
 
 .featured-card-image {
-  width: 100%;
-  height: 340px;
+  width: 450px;
+  height: 310px;
   aspect-ratio: 16 / 7;
   object-fit: cover;
-  border-radius: 18px;
+  border-radius: 0;
   box-shadow: 0 1px 8px rgba(0,0,0,0.12);
   background: #eee;
-  margin: 0;
+  margin-left: -5px;
+  margin-top: -28px;
+  position: relative;
   display: block;
 }
 
 .featured-card-title {
-  font-family: 'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Freigeist Wide', Arial, sans-serif;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 400;
   color: #000;
-  margin-top: 16px;
-  margin-bottom: 0;
+  margin-top: 30px;
+  margin-left: -20px;
   line-height: 1.2;
+  
 }
 
 .featured-card-desc {
-  font-family: 'Inter', 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: #6B7280;
+  font-family: 'Raleway', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  color: #838383;
   line-height: 1.7;
-  margin-top: 8px;
+  margin-top: 20px;
+  margin-left: 0;
+  width: 100%;
+  text-align: left;
+  max-width: 450px;
+  letter-spacing: 0.04em;
 }
 
 .featured-section-arrows {
   position: absolute;
-  top: 32px;
-  right: 40px;
+  top: 80px;
+  right: 85px;
   display: flex;
-  gap: 16px;
+  gap: 15px;
   z-index: 2;
 }
 
 .arrow-btn-new {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background: none;
   border: 1px solid #ddd;
@@ -330,3 +357,26 @@ body {
   background: #f5f5f5;
   border-color: #bbb;
 }
+
+.arrow-btn-new:last-child {
+
+  color: #543c2c;
+  border-color: #543c2c;
+}
+
+@font-face {
+  font-family: 'Raleway';
+  src: url('/fonts/Raleway-Light.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Freigeist Wide';
+  src: url('/fonts/freigeist-wideregular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
