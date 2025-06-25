@@ -14,7 +14,7 @@ export default function ClientComponent({ content }) {
   const translateX = -(startIdx * (cardWidth + gap));
 
   return (
-    <section className="featured-section">
+    <section className="featured-section" role="region" aria-label="Featured travel experiences carousel">
       <div className="featured-section-arrows">
         <button className="arrow-btn-new arrow-btn-left" onClick={handlePrev}>
           &#8592;
@@ -23,7 +23,7 @@ export default function ClientComponent({ content }) {
           &#8594;
         </button>
       </div>
-      <div className="featured-section-container">
+      <div className="featured-section-container" id="main-content">
         <h2 className="featured-section-title">{content.heading}</h2>
         <p
           className="featured-section-subtitle"

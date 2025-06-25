@@ -1,5 +1,5 @@
-import { client } from "@/lib/sanity"; // ✅ Make sure /lib is inside /src!
-import ClientComponent from "@/components/ClientComponent"; // 👇
+import { client } from "@/lib/sanity";
+import ClientComponent from "@/components/ClientComponent";
 
 export default async function Home() {
   const query = `*[_type == "featuredContent"][0]{
